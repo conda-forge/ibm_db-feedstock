@@ -10,7 +10,7 @@ source:
   sha256: a609e07295d16455d40df94ddd61b3d476606f5d44e3352103776e3ecbff185a
 
 build:
-  number: 1
+  number: 2
   script: "rm -r -f ${SP_DIR}/tests && {{ PYTHON }} -m pip install . -vv"
 
 requirements:
