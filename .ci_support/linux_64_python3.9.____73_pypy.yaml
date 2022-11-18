@@ -15,15 +15,13 @@ cxx_compiler_version:
 docker_image:
 - condaforge/linux-anvil-cos7-x86_64
 libxml2:
-- '2.9'
+- '2.10'
 pin_run_as_build:
-  libxml2:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.7.* *_cpython
+- 3.9.* *_73_pypy
 target_platform:
 - linux-64
 zip_keys:
