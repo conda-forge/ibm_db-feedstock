@@ -1,11 +1,11 @@
-About ibm_db
-============
+About ibm_db-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ibm_db-feedstock/blob/main/LICENSE.txt)
 
 Home: https://pypi.org/project/ibm-db/
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ibm_db-feedstock/blob/main/LICENSE.txt)
 
 Summary: Python DBI driver for DB2 (LUW, zOS, i5) and IDS
 
