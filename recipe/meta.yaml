@@ -14,6 +14,9 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv  # [win]
+  # The macOS binary is built using GCC and thus incompatible with libcxx
+  # otool -L $SP_DIR/clidriver/lib/libdb2.dylib|grep gcc
+  skip: true  # [osx]
 
 requirements:
   build:
