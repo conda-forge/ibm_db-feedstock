@@ -1,0 +1,43 @@
+From 66ed39b6c7171ccfe1a8fa9780bb016ca151554d Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Fri, 8 Dec 2023 22:06:24 +0100
+Subject: [PATCH] Use int instead of NULL pointer
+
+---
+ ibm_db.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/ibm_db.c b/ibm_db.c
+index 83fa4d1..e153c66 100644
+--- a/ibm_db.c
++++ b/ibm_db.c
+@@ -5691,7 +5691,7 @@ static int _python_ibm_db_bind_data( stmt_handle *stmt_res, param_node *curr, Py
+                     {
+ 			            item = PyList_GetItem(bind_data, i);
+ 			            if (TYPE(item) == PYTHON_NIL){
+-				            curr->ivalueArray[i] = NULL;
++				            curr->ivalueArray[i] = 0;
+ 				            curr->bind_indicator_array[i] = SQL_NULL_DATA;
+ 			            } else {
+ 				            curr->ivalueArray[i] = PyLong_AsLong(item);
+@@ -5735,7 +5735,7 @@ static int _python_ibm_db_bind_data( stmt_handle *stmt_res, param_node *curr, Py
+ 		        {
+ 			        item = PyList_GetItem(bind_data, i);
+ 			        if (TYPE(item) == PYTHON_NIL){
+-				        curr->ivalueArray[i] = NULL;
++				        curr->ivalueArray[i] = 0;
+ 				        curr->bind_indicator_array[i] = SQL_NULL_DATA;
+ 			        } else {
+                         curr->ivalueArray[i] = PyLong_AsLong(item);
+@@ -5778,7 +5778,7 @@ static int _python_ibm_db_bind_data( stmt_handle *stmt_res, param_node *curr, Py
+ 		        {
+ 			        item = PyList_GetItem(bind_data, i);
+ 			        if (TYPE(item) == PYTHON_NIL){
+-				        curr->ivalueArray[i] = NULL;
++				        curr->ivalueArray[i] = 0;
+ 				        curr->bind_indicator_array[i] = SQL_NULL_DATA;
+ 			        } else {
+                         curr->ivalueArray[i] = PyLong_AsLong(item);
+-- 
+2.39.3 (Apple Git-145)
+
