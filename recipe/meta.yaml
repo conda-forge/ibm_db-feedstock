@@ -18,6 +18,7 @@ build:
   # * https://github.com/ibmdb/python-ibmdb/issues/804
   # * https://github.com/ibmdb/python-ibmdb/issues/824
   skip: true  # [osx]
+  skip: true  # [win and py=311]
   script: {{ PYTHON }} -m pip install . -vv  # [win]
 
 requirements:
