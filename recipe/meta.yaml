@@ -1,5 +1,5 @@
 {% set name = "ibm_db" %}
-{% set version = "3.1.1" %}
+{% set version = "3.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1057140840f6c9ae0b06fc35d934ede2187b0b5489d88bce244d0ea45e38ce7a
+  sha256: 465699d5683e189aefdde14fa77f510bce4a9eb4c1ff6bc82aa6ad421b5c06fe
+  patches:
+    - 0001-Omit-GCC-check.patch
 
 build:
-  number: 3
+  number: 0
   # The macOS binary is built using GCC and thus incompatible with libcxx
   # otool -L $SP_DIR/clidriver/lib/libdb2.dylib|grep gcc
   # See also
