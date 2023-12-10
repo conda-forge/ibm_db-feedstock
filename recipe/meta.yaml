@@ -8,6 +8,8 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 465699d5683e189aefdde14fa77f510bce4a9eb4c1ff6bc82aa6ad421b5c06fe
+  patches:
+    - 0001-Omit-GCC-check.patch
 
 build:
   number: 0
