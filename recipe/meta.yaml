@@ -42,9 +42,11 @@ requirements:
     - libxml2
 
 test:
+  commands:
+    - python -c "import os; os.add_dll_directory(os.environ['SP_DIR'] + '\\clidriver\\bin'); import ibm_db; import ibm_db_dbi"  # [win]
   imports:
-    - ibm_db
-    - ibm_db_dbi
+    - ibm_db  # [not win]
+    - ibm_db_dbi  # [not win]
 
 about:
   home: https://pypi.org/project/ibm-db/
