@@ -1,5 +1,5 @@
 {% set name = "ibm_db" %}
-{% set version = "3.1.4" %}
+{% set version = "3.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f05e349d25f07bd246511a0498cd84589327638c466efff99b16a3e146ca1515
+  sha256: f8ce59150cad0c09352cfa1a8083e74d4f3a319158e11d7ee82c199c7384b708
   patches:
     - 0001-Omit-GCC-check.patch
 
@@ -42,9 +42,11 @@ requirements:
     - libxml2
 
 test:
+  commands:
+    - python -c "import os; os.add_dll_directory(os.environ['SP_DIR'] + '\\clidriver\\bin'); import ibm_db; import ibm_db_dbi"  # [win]
   imports:
-    - ibm_db
-    - ibm_db_dbi
+    - ibm_db  # [not win]
+    - ibm_db_dbi  # [not win]
 
 about:
   home: https://pypi.org/project/ibm-db/

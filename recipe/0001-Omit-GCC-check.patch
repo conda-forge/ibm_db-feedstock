@@ -1,6 +1,6 @@
-From bd6bd7fd20f98f5e4f74d4123f524570fe91eed0 Mon Sep 17 00:00:00 2001
+From 04fbcf02dab573483b4349519cd8d0f9979adca1 Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
-Date: Mon, 11 Dec 2023 13:21:04 +0100
+Date: Mon, 11 Dec 2023 14:22:26 +0100
 Subject: [PATCH] Omit GCC check
 
 ---
@@ -8,12 +8,12 @@ Subject: [PATCH] Omit GCC check
  1 file changed, 6 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index 7908200..44bcd0d 100755
+index 944131e..c5a0702 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -482,12 +482,6 @@ if (sys.platform[0:3] == 'win'):
-     else:
-         ext_modules = _ext_modules(ibm_db_include, library, ibm_db_lib)
+@@ -499,12 +499,6 @@ elif (sys.platform[0:3] == 'win'):
+ else:
+     ext_modules = _ext_modules(ibm_db_include, library, ibm_db_lib, ibm_db_lib_runtime)
          
 -if('win32' not in sys.platform):
 -    if sys.version_info >= (3, ):        
