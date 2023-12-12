@@ -12,7 +12,7 @@ source:
     - 0001-Omit-GCC-check.patch
 
 build:
-  number: 1
+  number: 2
   # The macOS binary is built using GCC and thus incompatible with libcxx
   # otool -L $SP_DIR/clidriver/lib/libdb2.dylib|grep gcc
   # See also
