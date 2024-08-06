@@ -10,6 +10,7 @@ source:
   sha256: ec7075246849437ed79c60447b05a4bee78a3f6ca2646f4e60a028333c72957a
   patches:
     - 0001-Omit-GCC-check.patch
+    - 0002-clang.patch  # [osx]
 
 build:
   number: 1

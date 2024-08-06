@@ -1,0 +1,40 @@
+diff --git a/ibm_db.c b/ibm_db.c
+index 9d82b68..c115d25 100644
+--- a/ibm_db.c
++++ b/ibm_db.c
+@@ -1627,7 +1627,7 @@ static SQLWCHAR* getUnicodeDataAsSQLWCHAR(PyObject *pyobj, int *isNewBuffer)
+ 
+     if (maxuniValue <= 65536) {
+         *isNewBuffer = 0;
+-        return (SQLWCHAR*)PyUnicode_AsWideCharString(pyobj,maxuniValue);
++        return (SQLWCHAR*)PyUnicode_AsWideCharString(pyobj,&maxuniValue);
+     }
+ 
+     *isNewBuffer = 1;
+@@ -5691,7 +5691,7 @@ static int _python_ibm_db_bind_data( stmt_handle *stmt_res, param_node *curr, Py
+                     {
+ 			            item = PyList_GetItem(bind_data, i);
+ 			            if (TYPE(item) == PYTHON_NIL){
+-				            curr->ivalueArray[i] = NULL;
++				            curr->ivalueArray[i] = 0;
+ 				            curr->bind_indicator_array[i] = SQL_NULL_DATA;
+ 			            } else {
+ 				            curr->ivalueArray[i] = PyLong_AsLong(item);
+@@ -5735,7 +5735,7 @@ static int _python_ibm_db_bind_data( stmt_handle *stmt_res, param_node *curr, Py
+ 		        {
+ 			        item = PyList_GetItem(bind_data, i);
+ 			        if (TYPE(item) == PYTHON_NIL){
+-				        curr->ivalueArray[i] = NULL;
++				        curr->ivalueArray[i] = 0;
+ 				        curr->bind_indicator_array[i] = SQL_NULL_DATA;
+ 			        } else {
+                         curr->ivalueArray[i] = PyLong_AsLong(item);
+@@ -5778,7 +5778,7 @@ static int _python_ibm_db_bind_data( stmt_handle *stmt_res, param_node *curr, Py
+ 		        {
+ 			        item = PyList_GetItem(bind_data, i);
+ 			        if (TYPE(item) == PYTHON_NIL){
+-				        curr->ivalueArray[i] = NULL;
++				        curr->ivalueArray[i] = 0;
+ 				        curr->bind_indicator_array[i] = SQL_NULL_DATA;
+ 			        } else {
+                         curr->ivalueArray[i] = PyLong_AsLong(item);
