@@ -1,5 +1,5 @@
 {% set name = "ibm_db" %}
-{% set version = "3.2.3" %}
+{% set version = "3.2.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,19 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ec7075246849437ed79c60447b05a4bee78a3f6ca2646f4e60a028333c72957a
+  sha256: 8e790705fa030b1731105b741612b67fe60a23fbcd9f1fe483ad0a74fb6f7689
   patches:
     - 0001-Omit-GCC-check.patch
 
 build:
   number: 1
-  # The macOS binary is built using GCC and thus incompatible with libcxx
-  # otool -L $SP_DIR/clidriver/lib/libdb2.dylib|grep gcc
-  # See also
-  # * https://github.com/ibmdb/python-ibmdb/issues/835
-  # * https://github.com/ibmdb/python-ibmdb/issues/804
-  # * https://github.com/ibmdb/python-ibmdb/issues/824
-  skip: true  # [osx]
   skip: true  # [win and py==311]
   script: {{ PYTHON }} -m pip install . -vv  # [win]
 
