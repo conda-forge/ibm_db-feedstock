@@ -15,6 +15,7 @@ build:
   number: 1
   # the osx-64 libdb2.dylib is built using gcc, which is incompatible with the conda-forge ecosystem
   # otool -L $SP_DIR/clidriver/lib/libdb2.dylib|grep gcc
+  # https://github.com/ibmdb/db2drivers/issues/3#issuecomment-2566168370
   skip: true  # [osx and x86_64]
   skip: true  # [win and py==311]
   script: {{ PYTHON }} -m pip install . -vv  # [win]
