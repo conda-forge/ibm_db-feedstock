@@ -1,5 +1,5 @@
 {% set name = "ibm_db" %}
-{% set version = "3.2.6" %}
+{% set version = "3.2.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6df13429c21454c46ee0c38355cb435a2c4cc639d747a3d2aee1cbf9562d943c
+  sha256: b3c3b4550364a43bf1daa4519b668e6e00e7c3935291f8c444c4ec989417e861
   patches:
     - 0001-Omit-GCC-check.patch
 
