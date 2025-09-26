@@ -32,7 +32,7 @@ requirements:
     - python
     - pip
     - setuptools
-    - libxml2-devel
+    - libxml2  # [linux]
   run:
     - python
     - setuptools
