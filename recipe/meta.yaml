@@ -32,11 +32,11 @@ requirements:
     - python
     - pip
     - setuptools
-    - libxml2-devel
+    - libxml2  # [linux]
   run:
     - python
     - setuptools
-    - libxml2-devel
+    - libxcrypt1  # [linux]
 
 test:
   commands:
