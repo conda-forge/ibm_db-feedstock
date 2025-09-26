@@ -1,0 +1,71 @@
+schema_version: 1
+
+context:
+  name: ibm_db
+  version: 3.2.7
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: b3c3b4550364a43bf1daa4519b668e6e00e7c3935291f8c444c4ec989417e861
+  patches:
+    - 0001-Omit-GCC-check.patch
+
+build:
+  # the osx-64 libdb2.dylib is built using gcc, which is incompatible with the conda-forge ecosystem
+  # otool -L $SP_DIR/clidriver/lib/libdb2.dylib|grep gcc
+  # https://github.com/ibmdb/db2drivers/issues/3#issuecomment-2566168370
+  number: 2
+  skip: osx and x86_64
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then: python
+    - if: build_platform != target_platform
+      then: cross-python_${{ target_platform }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - if: ppc64le
+      then: ${{ cdt('numactl-devel') }}
+  host:
+    - python
+    - pip
+    - setuptools
+    - libxml2-devel
+  run:
+    - python
+    - setuptools
+
+tests:
+  - python:
+      imports:
+        - if: not win
+          then: ibm_db
+        - if: not win
+          then: ibm_db_dbi
+  - script:
+      - if: win
+        then: python -c "import os; os.add_dll_directory(os.environ['SP_DIR'] + '\\clidriver\\bin'); import ibm_db; import ibm_db_dbi"
+
+about:
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Python DBI driver for DB2 (LUW, zOS, i5) and IDS
+  description: |
+    This extension is the implementation of Python Database API Specification v2.0
+    The extension supports DB2 (LUW, zOS, i5) and IDS (Informix Dynamic Server)
+  homepage: https://pypi.org/project/ibm-db/
+  repository: https://github.com/ibmdb/python-ibmdb
+  documentation: https://github.com/ibmdb/python-ibmdb/wiki
+
+extra:
+  recipe-maintainers:
+    - SabaKauser
+    - xhochy
+    - amukherjee28
+
