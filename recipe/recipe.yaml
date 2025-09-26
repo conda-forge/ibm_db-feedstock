@@ -36,6 +36,8 @@ requirements:
     - python
     - pip
     - setuptools
+    - if: linux
+      then: libxcrypt
     - libxml2-devel
   run:
     - python
