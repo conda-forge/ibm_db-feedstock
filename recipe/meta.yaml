@@ -36,7 +36,7 @@ requirements:
   run:
     - python
     - setuptools
-    - libxml2-devel
+    - libxcrypt1
 
 test:
   commands:
