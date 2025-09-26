@@ -42,15 +42,10 @@ requirements:
     - setuptools
 
 tests:
-  - python:
-      imports:
-        - if: not win
-          then: ibm_db
-        - if: not win
-          then: ibm_db_dbi
   - script:
       - if: win
         then: python -c "import os; os.add_dll_directory(os.environ['SP_DIR'] + '\\clidriver\\bin'); import ibm_db; import ibm_db_dbi"
+        else: python -c "import ibm_db; import ibm_db_dbi"
 
 about:
   license: Apache-2.0
