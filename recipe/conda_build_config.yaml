@@ -4,5 +4,5 @@ c_stdlib_version:   # [linux or osx]
 # Before removing this pin, check the acutal logs for the correct linkage
 libxml2:
   - "2.13"
-libxml2-devel:
+libxml2_devel:
   - "2.13"
