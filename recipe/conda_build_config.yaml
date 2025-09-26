@@ -1,3 +1,8 @@
 c_stdlib_version:   # [linux or osx]
   - "2.17"          # [linux]
   - "14.5"          # [osx]
+# Before removing this pin, check the acutal logs for the correct linkage
+libxml2:
+  - "2.13"
+libxml2-devel:
+  - "2.13"
