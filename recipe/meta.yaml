@@ -1,5 +1,5 @@
 {% set name = "ibm_db" %}
-{% set version = "3.2.7" %}
+{% set version = "3.2.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b3c3b4550364a43bf1daa4519b668e6e00e7c3935291f8c444c4ec989417e861
+  sha256: 2e0e59a8a94f2c020c4c62642bb239849dd7f35b6a7bb2f5018b8b67830002bd
   patches:
     - 0001-Omit-GCC-check.patch
 
 build:
-  number: 1
+  number: 0
   # the osx-64 libdb2.dylib is built using gcc, which is incompatible with the conda-forge ecosystem
   # otool -L $SP_DIR/clidriver/lib/libdb2.dylib|grep gcc
   # https://github.com/ibmdb/db2drivers/issues/3#issuecomment-2566168370
