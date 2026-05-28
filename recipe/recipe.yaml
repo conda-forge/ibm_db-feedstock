@@ -23,8 +23,6 @@ build:
   skip:
     - if: osx and x86_64
       then: true
-    - if: win and py==311
-      then: true
   script:
     - if: win
       then: ${{ PYTHON }} -m pip install . -vv
