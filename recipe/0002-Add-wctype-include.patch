@@ -1,0 +1,10 @@
+diff --git a/ibm_db.c b/ibm_db.c
+index 0b465ac..199ea3e 100644
+--- a/ibm_db.c
++++ b/ibm_db.c
+@@ -29,6 +29,7 @@
+ #include <ctype.h>
++#include <wctype.h>
+ #ifdef _WIN32
+ #include <windows.h>
+ #else
