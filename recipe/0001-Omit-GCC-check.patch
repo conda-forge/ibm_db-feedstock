@@ -1,8 +1,23 @@
-diff --git a/setup.py b/setup.py
-index 0b465ac..199ea3e 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -506,12 +506,6 @@ elif (sys.platform[0:3] == 'win'):
+@@ -338,6 +338,16 @@
+             else:
+                 cliFileName = 's390_odbc_cli.tar.gz'
+                 arch_ = 's390'
++        elif ('aarch64' in os.uname()[4]):
++            os_ = 'linux'
++            if is64Bit:
++                cliFileName = 'linuxarm64_odbc_cli.tar.gz'
++                arch_ = 'arm64'
++                if(clidriver_version.startswith("v11")):
++                    clidriver_version = "v12.1.0"
++            else:
++                cliFileName = 'linuxarm32_odbc_cli.tar.gz'
++                arch_ = 'armv7l'
+     elif ('sunos' in sys.platform):
+         os_ = 'solaris*'
+         if ('i86pc' in os.uname()[4]):
+@@ -520,12 +528,6 @@
  else:
      ext_modules = _ext_modules(ibm_db_include, library, ibm_db_lib, ibm_db_lib_runtime)
          
@@ -12,6 +27,6 @@ index 0b465ac..199ea3e 100644
 -           _checkGcc()
 -           _checkPythonHeaderFile()
 -
- #'Operating System :: z/OS', pypi upload fails with error - Not a valid classifier
- setup( name    = PACKAGE,
-     version = VERSION,
+ # Custom build_py to include ibm_db_dll.pth at the wheel root
+ # so it lands in site-packages and triggers DLL registration on startup.
+ class _build_py_with_pth(build_py):
