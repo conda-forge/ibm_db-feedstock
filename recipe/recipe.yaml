@@ -2,7 +2,7 @@
 
 context:
   version: "3.2.9"
-  build_number: 0
+  build_number: 1
 
 package:
   name: ibm_db
@@ -26,9 +26,7 @@ build:
   script:
     - if: win
       then: ${{ PYTHON }} -m pip install . -vv
-    - if: not win
-      then: build.sh
-
+      else: build.sh
 requirements:
   build:
     - if: build_platform != target_platform
@@ -57,8 +55,7 @@ tests:
     then:
       - script:
           - python -c "import os; os.add_dll_directory(os.environ['SP_DIR'] + '\\clidriver\\bin'); import ibm_db; import ibm_db_dbi"
-  - if: not win
-    then:
+    else:
       - python:
           imports:
             - ibm_db
