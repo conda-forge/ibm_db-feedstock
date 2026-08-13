@@ -1,7 +1,7 @@
 # v1 recipe format
 
 context:
-  version: "3.2.9"
+  version: "3.3.0"
   build_number: 0
 
 package:
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/i/ibm_db/ibm_db-${{ version }}.tar.gz
-  sha256: 0ad6dc4575519a5563fd7f845fc6bc00d688020e1d3ae78d382e79183bc32b0b
+  sha256: 75c6749957d202e0b6b37e1e823583bfc37b65293ee123fb287e409d7426b53d
   patches:
     - 0001-Omit-GCC-check.patch
     - 0002-Add-wctype-include.patch
@@ -26,9 +26,7 @@ build:
   script:
     - if: win
       then: ${{ PYTHON }} -m pip install . -vv
-    - if: not win
-      then: build.sh
-
+      else: build.sh
 requirements:
   build:
     - if: build_platform != target_platform
@@ -57,8 +55,7 @@ tests:
     then:
       - script:
           - python -c "import os; os.add_dll_directory(os.environ['SP_DIR'] + '\\clidriver\\bin'); import ibm_db; import ibm_db_dbi"
-  - if: not win
-    then:
+    else:
       - python:
           imports:
             - ibm_db
