@@ -46,7 +46,6 @@ requirements:
       then: libnuma
   run:
     - python
-    - setuptools
     - if: linux
       then: libxcrypt1
 
