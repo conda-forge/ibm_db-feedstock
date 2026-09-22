@@ -1,7 +1,11 @@
 c_stdlib_version:   # [linux or osx]
   - "2.17"          # [linux]
   - "14.5"          # [osx]
-# Before removing this pin, check the acutal logs for the correct linkage
+# IBM's prebuilt clidriver/lib/libdb2.so.1 has a hard DT_NEEDED on libxml2.so.2.
+# Upstream libxml2 bumped that soname to libxml2.so.16 in 2.14.0, so 2.13 is the last
+# version that can satisfy the bundled driver. Lifting this pin builds fine in CI (the
+# container has a system libxml2.so.2) but ships a package that fails to import.
+# Before removing this pin, check the actual logs for the correct linkage.
 libxml2:
   - "2.13"
 libxml2_devel:
